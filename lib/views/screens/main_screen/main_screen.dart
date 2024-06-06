@@ -56,21 +56,21 @@ class _MainScreenState extends State<MainScreen>
         ),
       ),
       body: TabBarView(controller: _tabController, children: _pages),
-      floatingActionButton: ZoomTapAnimation(
-        child: Container(
-          width: 60.w,
-          height: 60.h,
-          decoration: BoxDecoration(
-            color: Color(0xFF05C474),
-            shape: BoxShape.circle,
-          ),
-          child: Icon(
-            Icons.add,
-            size: 30.sp,
-            color: Colors.white,
-          ),
-        ),
-      ),
+      // floatingActionButton: ZoomTapAnimation(
+      //   child: Container(
+      //     width: 60.w,
+      //     height: 60.h,
+      //     decoration: BoxDecoration(
+      //       color: Color(0xFF05C474),
+      //       shape: BoxShape.circle,
+      //     ),
+      //     child: Icon(
+      //       Icons.add,
+      //       size: 30.sp,
+      //       color: Colors.white,
+      //     ),
+      //   ),
+      // ),
     );
   }
 }
