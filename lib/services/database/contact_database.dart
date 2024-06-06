@@ -1,8 +1,7 @@
 import 'package:contacts_and_dialer/models/contact.dart';
-import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 
-class ContactDatabase with ChangeNotifier {
+class ContactDatabase {
   ContactDatabase._privateConstructor();
 
   static final ContactDatabase instance = ContactDatabase._privateConstructor();
@@ -48,13 +47,12 @@ class ContactDatabase with ChangeNotifier {
         Contact.fromJson(json),
       );
     }
-    notifyListeners();
     return loadedContacts;
   }
 
   Future<void> addContact(
       {required String name, required String number}) async {
-    final db = await contactDatabase;
+    final Database db = await contactDatabase;
     await db.insert(
       'contacts',
       {
@@ -62,6 +60,32 @@ class ContactDatabase with ChangeNotifier {
         'number': number,
       },
     );
-    notifyListeners();
+  }
+
+  Future<void> editContact(
+      {required int id,
+      required String newName,
+      required String newNumber}) async {
+    final Database db = await contactDatabase;
+
+    await db.update(
+      'contacts',
+      {
+        'name': newName,
+        'number': newNumber,
+      },
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
+
+  Future<void> deleteContact({required int id}) async {
+    final Database db = await contactDatabase;
+
+    await db.delete(
+      'contacts',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
   }
 }

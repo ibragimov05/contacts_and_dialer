@@ -1,8 +1,9 @@
-import 'package:contacts_and_dialer/provider/theme_provider.dart';
-import 'package:contacts_and_dialer/views/screens/contacts_screen/contacts_screen.dart';
+import 'package:contacts_and_dialer/models/contact.dart';
+import 'package:contacts_and_dialer/services/database/contact_database.dart';
+import 'package:contacts_and_dialer/views/screens/contacts_screen/all_contacts_screen.dart';
+import 'package:contacts_and_dialer/views/widgets/custom_contact_alert_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class MainScreen extends StatefulWidget {
@@ -56,21 +57,7 @@ class _MainScreenState extends State<MainScreen>
         ),
       ),
       body: TabBarView(controller: _tabController, children: _pages),
-      // floatingActionButton: ZoomTapAnimation(
-      //   child: Container(
-      //     width: 60.w,
-      //     height: 60.h,
-      //     decoration: BoxDecoration(
-      //       color: Color(0xFF05C474),
-      //       shape: BoxShape.circle,
-      //     ),
-      //     child: Icon(
-      //       Icons.add,
-      //       size: 30.sp,
-      //       color: Colors.white,
-      //     ),
-      //   ),
-      // ),
+      // floatingActionButton:
     );
   }
 }
